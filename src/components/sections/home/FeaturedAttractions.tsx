@@ -34,7 +34,7 @@ export default function FeaturedAttractions() {
         "/images/haller-park1.jpg",
         "/images/diani-beach2.jpg",
         "/images/watamu1.jpg",
-      ], // Removed extra image to match items count
+      ],
       setFeaturedBgColors
     );
 
@@ -50,7 +50,7 @@ export default function FeaturedAttractions() {
     );
   }, []);
 
-  const createSlider = (
+  const createCarousel = (
     title: string,
     items: Array<{ title: string; description: string; image: string }>,
     colors: string[]
@@ -88,8 +88,8 @@ export default function FeaturedAttractions() {
           Explore Mombasa's Offerings
         </h2>
 
-        {/* Featured Attractions Slider */}
-        {createSlider(
+        {/* Featured Attractions Carousel */}
+        {createCarousel(
           "Featured Attractions",
           [
             {
@@ -116,8 +116,8 @@ export default function FeaturedAttractions() {
           featuredBgColors
         )}
 
-        {/* Cultural Events Slider */}
-        {createSlider(
+        {/* Cultural Events Carousel */}
+        {createCarousel(
           "Cultural Events",
           [
             {
