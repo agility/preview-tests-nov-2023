@@ -20,22 +20,31 @@ export default async function handler(
   }
 
   try {
+    // Check if the user exists in the database
     const user = await prisma.user.findUnique({ where: { email } });
-    if (!user || !(await bcrypt.compare(password, user.password))) {
+    if (!user) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
+    // Validate password
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    // Generate JWT
     const token = jwt.sign(
       { id: user.id, role: user.role },
-      process.env.JWT_SECRET || "default_secret",
+      process.env.JWT_SECRET || "default_secret", // Replace with a strong secret
       {
-        expiresIn: "1h",
+        expiresIn: "1h", // Token expiration time
       }
     );
 
+    // Return token and role in the response
     res.status(200).json({ token, role: user.role });
   } catch (error) {
-    console.error(error);
+    console.error("Login error:", error);
     res.status(500).json({ error: "Something went wrong" });
   }
 }

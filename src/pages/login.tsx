@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -26,16 +26,20 @@ const Login = () => {
         throw new Error(data.error || "Failed to login.");
       }
 
-      alert("Login successful!");
-      router.push("/"); // Redirect to homepage or dashboard
+      // Check the user's role and redirect accordingly
+      if (data.role === "admin") {
+        router.push("/admin"); // Redirect to the admin page
+      } else {
+        router.push("/"); // Redirect to homepage or dashboard
+      }
     } catch (err: any) {
       setError(err.message);
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+    <div className="flex items-center justify-center min-h-screen bg-[url(/images/bg.jpg)] bg-cover">
+      <div className="w-full max-w-md p-8 bg-white/50 backdrop-blur-md rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-center text-gray-700">Login</h2>
         {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
         <form onSubmit={handleSubmit} className="mt-6">

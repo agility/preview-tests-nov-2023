@@ -12,6 +12,34 @@ const DashboardHeader = () => {
           <h1 className="text-xl font-bold">Admin Dashboard</h1>
         </div>
 
+        {/* Right: Navigation Links (Large Screens) */}
+        <div className="hidden sm:flex items-center space-x-6">
+          <a href="/admin" className="hover:underline">
+            Admin
+          </a>
+          <a href="/admin/users" className="hover:underline">
+            Users
+          </a>
+          <a href="/admin/destinations" className="hover:underline">
+            Destinations
+          </a>
+          <a href="/search" className="hover:underline">
+            Search
+          </a>
+          <a href="/logout" className="hover:underline text-red-400">
+            Logout
+          </a>
+          {/* Profile Section */}
+          <div className="flex items-center space-x-2">
+            <img
+              src="https://via.placeholder.com/32"
+              alt="User avatar"
+              className="h-8 w-8 rounded-full"
+            />
+            <span className="font-medium">Admin</span>
+          </div>
+        </div>
+
         {/* Hamburger Menu Button (Small Screens) */}
         <button
           className="sm:hidden text-white focus:outline-none"
@@ -34,41 +62,6 @@ const DashboardHeader = () => {
             />
           </svg>
         </button>
-
-        {/* Center: Search bar (Visible on larger screens) */}
-        <div className="hidden sm:flex flex-1 max-w-lg mx-4">
-          <div className="relative w-full">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-full py-2 pl-10 pr-4 rounded-md text-gray-800 placeholder-gray-400 border border-blue-500 focus:outline-none focus:ring focus:ring-blue-300"
-            />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 16l-4-4m0 0l4-4m-4 4h16"
-              />
-            </svg>
-          </div>
-        </div>
-
-        {/* Right: Profile Section */}
-        <div className="hidden sm:flex items-center space-x-4">
-          <img
-            src="https://via.placeholder.com/32"
-            alt="User avatar"
-            className="h-8 w-8 rounded-full"
-          />
-          <span className="font-medium">Admin</span>
-        </div>
       </div>
 
       {/* Dropdown Menu (Small Screens) */}
@@ -78,6 +71,11 @@ const DashboardHeader = () => {
             <li className="py-2 hover:bg-blue-500">
               <a href="/admin" className="block">
                 Admin
+              </a>
+            </li>
+            <li className="py-2 hover:bg-blue-500">
+              <a href="/admin/users" className="block">
+                Users
               </a>
             </li>
             <li className="py-2 hover:bg-blue-500">

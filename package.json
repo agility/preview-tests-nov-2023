@@ -6,6 +6,7 @@
     "@prisma/client": "^6.2.1",
     "axios": "^1.7.9",
     "bcrypt": "^5.1.1",
+    "colorthief": "^2.6.0",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.474.0",
@@ -13,6 +14,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "sharp": "^0.33.5",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
